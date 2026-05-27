@@ -469,16 +469,20 @@ document.getElementById('commForm').addEventListener('submit',async function(e){
   const btnText=document.getElementById('btnText');
   btn.disabled=true;spinner.style.display='block';btnText.style.display='none';
   const payload={
-    broker,emailBroker:document.getElementById('brokerEmail').value,
-    propiedad:cliente+' / '+propiedad,proyecto,
-    sociedad:p?p.sociedad:'',ruc:p?p.ruc:'',
-    fechaCierre:document.getElementById('fechaCierre').value,
+    broker, emailBroker: document.getElementById('brokerEmail').value,
+    propiedad: cliente+' / '+propiedad, proyecto,
+    sociedad: p?p.sociedad:'', ruc: p?p.ruc:'',
+    fechaCierre: document.getElementById('fechaCierre').value,
     precioVenta: parseFloat(cv.sale.toFixed(2)),
-    itbmsAplica:cv.itbms?'Sí':'No',itbmsMonto:cv.tax,total:cv.total,
-    estado:'Pendiente',fechaRecibida:today(),
-    notas:document.getElementById('notas').value.trim(),
-    idioma:currentLang,sendEmail:true
-  };
+    pctComision: cv.pct,
+    comisionBase: parseFloat(cv.base.toFixed(2)),
+    itbmsAplica: cv.itbms?'Sí':'No',
+    itbmsMonto: parseFloat(cv.tax.toFixed(2)),
+    total: parseFloat(cv.total.toFixed(2)),
+    estado: 'Pendiente', fechaRecibida: today(),
+    notas: document.getElementById('notas').value.trim(),
+    idioma: currentLang, sendEmail: true
+};
   try{
     const formData=new FormData();
     formData.append('data',JSON.stringify(payload));
