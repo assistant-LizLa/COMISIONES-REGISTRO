@@ -421,11 +421,12 @@ function calcComm(){
 function getCalcValues(){
   const pctSel=document.getElementById('pctComision').value;
   const pct=pctSel==='custom'?parseFloat(document.getElementById('customPct').value)||0:parseFloat(pctSel)||0;
-  const sale=parseFloat(document.getElementById('precioVenta').value)||0;
+  const sale=parseFloat(parseFloat(document.getElementById('precioVenta').value).toFixed(2))||0;
   const itbms=document.getElementById('itbms').checked;
-  const base=sale*(pct/100);
-  const tax=itbms?base*0.07:0;
-  return{sale,pct,base,tax,total:base+tax,itbms};
+  const base=parseFloat((sale*(pct/100)).toFixed(2));
+  const tax=parseFloat((itbms?base*0.07:0).toFixed(2));
+  const total=parseFloat((base+tax).toFixed(2));
+  return{sale,pct,base,tax,total,itbms};
 }
 
 function updatePreview(){
