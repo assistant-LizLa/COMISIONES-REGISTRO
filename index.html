@@ -473,7 +473,7 @@ document.getElementById('commForm').addEventListener('submit',async function(e){
     propiedad:cliente+' / '+propiedad,proyecto,
     sociedad:p?p.sociedad:'',ruc:p?p.ruc:'',
     fechaCierre:document.getElementById('fechaCierre').value,
-    precioVenta:cv.sale,pctComision:cv.pct,comisionBase:cv.base,
+    precioVenta: parseFloat(cv.sale.toFixed(2)),
     itbmsAplica:cv.itbms?'Sí':'No',itbmsMonto:cv.tax,total:cv.total,
     estado:'Pendiente',fechaRecibida:today(),
     notas:document.getElementById('notas').value.trim(),
